@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Site Ki Klak{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{#- ------------- Navigation -------------------------------------------  -#}
+
+<nav class="nav">
+    <div class="nav-menu flex-row">
+        <div class="nav-brand">
+            <a href="#" class="text-gray">Site Ki Klak</a>
+        </div>
+        <div>
+            <ul class="nav-items">
+                <li class="nav-link">
+                    <a href="#">Akkeuil</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Le Klak</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Les Klakos</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Se Konnekter</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">S'inskrire</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Nous Konkater</a>
+                </li>
+            </ul>
+        </div>
+        <div class="social text-gray">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</nav>
+
+{#- ------X------- Navigation ------------------------------X-------------  -#}
+{% block body %}{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
 </html>
