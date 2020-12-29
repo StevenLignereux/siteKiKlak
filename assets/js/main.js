@@ -1,3 +1,19 @@
+const responsive = {
+    0: {
+        items: 1
+    },
+    320: {
+        items: 1
+    },
+    560: {
+        items: 2
+    },
+    960: {
+        items: 3
+    }
+}
+
+
 $(document).ready(() => {
 // ------------------------------------Responviv Script-------------------------------------------------------------------
     let $nav = $('.nav');
@@ -54,11 +70,19 @@ $(document).ready(() => {
        autoplayTimeout: 3000,
        dots: false,
        nav: true,
-       navText: [$('.owl-navigation .owl-nav-prev'), $('.owl-navigation .owl-nav-next')]
+       navText: [$('.owl-navigation .owl-nav-prev'), $('.owl-navigation .owl-nav-next')],
+       responsive: responsive
    });
 
     // ------------------X----------------------- Carousel------------------------------------X----------------------------------------
+    // ---------------------------------------------- Click to scroll up -----------------------------------------------------------------
+    $('.move-up span').click(function (){
+        $('html, body').animate({
+           scrollTop: 0
+        }, 1000);
+    });
 
+    // ------------------X---------------------------- Click to scroll up ----------------------X-------------------------------------------
 });
 
 

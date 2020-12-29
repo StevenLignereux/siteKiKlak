@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <footer class="footer">
+        <div class="container">
+            <div class="about-us">
+                <h2>About us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolor eos maxime mollitia odit
+                    pariatur, praesentium quasi quidem ratione voluptatibus!</p>
+            </div>
+            <div class="newsletter">
+                <h2>Newsletter</h2>
+                <p>Stay update with our latest</p>
+                <div class="form-element">
+                    <label for="newsletter">
+                        <input name="newsletter" type="text" placeholder="Email">
+                    </label>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                </div>
+            </div>
+            <div class="instagram">
+                <h2>Instagram</h2>
+                <div class="flex-row">
+                    <img src="{{ asset('build/images/instagram/thumb-card3.png') }}" alt="thumb-card1">
+                    <img src="{{ asset('build/images/instagram/thumb-card4.png') }}" alt="thumb-card2">
+                    <img src="{{ asset('build/images/instagram/thumb-card5.png') }}" alt="thumb-card3">
+                </div>
+                <div class="flex-row">
+                    <img src="{{ asset('build/images/instagram/thumb-card6.png') }}" alt="thumb-card4">
+                    <img src="{{ asset('build/images/instagram/thumb-card7.png') }}" alt="thumb-card5">
+                    <img src="{{ asset('build/images/instagram/thumb-card8.png') }}" alt="thumb-card6">
+                </div>
+            </div>
+            <div class="follow">
+                <h2>Follow us</h2>
+                <p>Let us be Social</p>
+                <div>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rights flex-row">
+            <h4 class="text-gray">
+                Copyright ©2020 All rights reserved | made by
+                <a href="https://www.linkedin.com/in/stevenlignereux/" target="_blank"><i class="fab fa-linkedin"></i> Steven Lignereux</a>
+            </h4>
+        </div>
+        <div class="move-up">
+            <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </footer>
+{% endblock %}
