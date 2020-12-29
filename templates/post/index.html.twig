@@ -2,13 +2,13 @@
 
 
 {% block body %}
-    {# ------------------------------------------- Site Content ---------------------------------------------------- -#}
+    {# ------------------------------------------- Site Content ----------------------------------------------------  -#}
     <div class="site-content">
         <div class="posts">
             <div class="post-content">
                 <div class="post-image">
                     <div>
-                        <img src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post1">
+                        <img class="img" src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post1">
                     </div>
                     <div class="post-info flex-row">
                         <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
@@ -26,10 +26,105 @@
                     <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
+            <hr>
+            <div class="post-content">
+                <div class="post-image">
+                    <div>
+                        <img class="img" src="{{ asset('build/images/Blog-post/blog2.png') }}" alt="post1">
+                    </div>
+                    <div class="post-info flex-row">
+                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
+                        <span> 2 Comments</span>
+                    </div>
+                </div>
+                <div class="post-title">
+                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
+                        contry</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
+                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
+                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
+                        sapiente similique.</p>
+                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <hr>
+            <div class="post-content">
+                <div class="post-image">
+                    <div>
+                        <img class="img" src="{{ asset('build/images/Blog-post/blog3.png') }}" alt="post1">
+                    </div>
+                    <div class="post-info flex-row">
+                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
+                        <span> 2 Comments</span>
+                    </div>
+                </div>
+                <div class="post-title">
+                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
+                        contry</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
+                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
+                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
+                        sapiente similique.</p>
+                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <hr>
+            <div class="post-content">
+                <div class="post-image">
+                    <div>
+                        <img class="img" src="{{ asset('build/images/Blog-post/blog4.png') }}" alt="post1">
+                    </div>
+                    <div class="post-info flex-row">
+                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
+                        <span> 2 Comments</span>
+                    </div>
+                </div>
+                <div class="post-title">
+                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
+                        contry</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
+                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
+                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
+                        sapiente similique.</p>
+                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="pagination flex-row">
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="pages">1</a>
+                <a href="#" class="pages">2</a>
+                <a href="#" class="pages">3</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
         </div>
         <aside class="sidebar">
-            <h1>SideBar</h1>
+            <h2>Category</h2>
+            <ul class="category-list">
+                <li class="list-items">
+                    <a href="#">Software</a>
+                    <span>(05)</span>
+                </li>
+                <li class="list-items">
+                    <a href="#">Technology</a>
+                    <span>(02)</span>
+                </li>
+                <li class="list-items">
+                    <a href="#">LifeStyle</a>
+                    <span>(07)</span>
+                </li>
+                <li class="list-items">
+                    <a href="#">Shopping</a>
+                    <span>(07)</span>
+                </li>
+                <li class="list-items">
+                    <a href="#">Food</a>
+                    <span>(01)</span>
+                </li>
+            </ul>
         </aside>
     </div>
-    {# ------------------X------------------------- Site Content ---------------------------X------------------------- -#}
+    {# ------------------X------------------------- Site Content ---------------------------X-------------------------  -#}
 {% endblock %}
