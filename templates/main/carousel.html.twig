@@ -1,27 +1,37 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+
+    <section>
         <div class="blog">
             <div class="container">
                 <div class="owl-carousel owl-theme blog-post">
-                    <div class="blog-content">
-                        <img src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post1">
+                    <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                        <img src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post-1">
                         <div class="blog-title">
                             <h3>London Fashion week's continued the evolution</h3>
                             <button class="btn btn-blog">Fashion</button>
                             <span>2 minutes</span>
                         </div>
                     </div>
-                    <div class="blog-content">
-                        <img src="{{ asset('build/images/Blog-post/blog2.png') }}" alt="post2">
+                    <div class="blog-content" data-aos="fade-in" data-aos-delay="200">
+                        <img src="{{ asset('build/images/Blog-post/blog2.png') }}" alt="post-1">
                         <div class="blog-title">
                             <h3>London Fashion week's continued the evolution</h3>
                             <button class="btn btn-blog">Fashion</button>
                             <span>2 minutes</span>
                         </div>
                     </div>
-                    <div class="blog-content">
-                        <img src="{{ asset('build/images/Blog-post/blog3.png') }}" alt="post1">
+                    <div class="blog-content" data-aos="fade-left" data-aos-delay="200">
+                        <img src="{{ asset('build/images/Blog-post/blog3.png') }}" alt="post-1">
+                        <div class="blog-title">
+                            <h3>London Fashion week's continued the evolution</h3>
+                            <button class="btn btn-blog">Fashion</button>
+                            <span>2 minutes</span>
+                        </div>
+                    </div>
+                    <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                        <img src="{{ asset('build/images/Blog-post/blog5.png') }}" alt="post-1">
                         <div class="blog-title">
                             <h3>London Fashion week's continued the evolution</h3>
                             <button class="btn btn-blog">Fashion</button>
@@ -29,8 +39,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="owl-navigation">
+                    <span class="owl-nav-prev"><i class="fas fa-long-arrow-alt-left"></i></span>
+                    <span class="owl-nav-next"><i class="fas fa-long-arrow-alt-right"></i></span>
+                </div>
             </div>
         </div>
+    </section>
 {% endblock %}
 
 
