@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include 'nav.html.twig' %}
+    <main>
+        <div class="site-content">
+            <div class="posts">
+                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="post-image">
+                        <div>
+                            <img class="img" src="{{ asset('build/images/krieur.jpg') }}" alt="post1">
+                        </div>
+                    </div>
+                    <div class="post-title">
+                        <h2>Une envie de Kriée</h2>
+                        <p>Au départ, notre idée est de Kréer un moment et un lieu pour dire, éKouter et partager ;
+                            faire exister et enrichir une parle Kommune et singulière à la fois, dans l'espace
+                            publiK ; valoriser le patrimoine humain d'une Kommunauté par les disKours de ses
+                            habitants.</p>
+                        <p>Des ékrits seraient rékoltés via des boîtes déposées dans des lieux publiKs et stratégiKs :
+                            Kafés, Maisons de Kartiers, bibliothek, bus... Le Krieur redonnerait de l'oralité à ces mots
+                            de papier. Il interpellerait et ferait réagir les habitants, en donnant une dimension
+                            loKale, Konviviale et speKtaKulaire à leurs propres messages.</p>
+                        <p>L'événement deviendrait un rendez-vous pour les habitués, une déKouverte pour les promeneurs
+                            mais également, un engagement citoyen pour s'ouvrir sur une autre parole</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            {% include 'main/sidebar.html.twig' %}
+        </div>
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}
