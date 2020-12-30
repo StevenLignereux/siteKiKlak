@@ -1,4 +1,7 @@
+
 const aos = require("aos");
+import Masonry from 'masonry-layout';
+
 const responsive = {
     0: {
         items: 1
@@ -67,24 +70,34 @@ $(document).ready(() => {
     // ----------------X----------------------Modal box--------------------------------------X-----------------------------------
 
     // ----------------------------------------- Carousel----------------------------------------------------------------------------
-   $('.owl-carousel').owlCarousel({
-       loop: true,
-       autoplay: false,
-       autoplayTimeout: 3000,
-       dots: false,
-       nav: true,
-       navText: [$('.owl-navigation .owl-nav-prev'), $('.owl-navigation .owl-nav-next')],
-       responsive: responsive
-   });
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        autoplay: false,
+        autoplayTimeout: 3000,
+        dots: false,
+        nav: true,
+        navText: [$('.owl-navigation .owl-nav-prev'), $('.owl-navigation .owl-nav-next')],
+        responsive: responsive
+    });
 
     // ------------------X----------------------- Carousel------------------------------------X----------------------------------------
     // ---------------------------------------------- Click to scroll up -----------------------------------------------------------------
-    $('.move-up span').click(function (){
+    $('.move-up span').click(function () {
         $('html, body').animate({
-           scrollTop: 0
+            scrollTop: 0
         }, 1000);
     });
     // ------------------X---------------------------- Click to scroll up ----------------------X-------------------------------------------
+
+    // ---------------------------------------------- Masonry Gallery -----------------------------------------------------------------
+    const grid = document.querySelector('.grid');
+
+    new Masonry(grid, {
+       itemSelector: '.grid-item',
+        gutter: 10
+    });
+
+    // ------------------X---------------------------- Masonry Gallery -------------------------X---------------------------------------
 });
 
 
