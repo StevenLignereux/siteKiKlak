@@ -1,3 +1,4 @@
+const aos = require("aos");
 const responsive = {
     0: {
         items: 1
@@ -12,6 +13,8 @@ const responsive = {
         items: 3
     }
 }
+
+aos.init();
 
 
 $(document).ready(() => {
@@ -81,7 +84,6 @@ $(document).ready(() => {
            scrollTop: 0
         }, 1000);
     });
-
     // ------------------X---------------------------- Click to scroll up ----------------------X-------------------------------------------
 });
 
