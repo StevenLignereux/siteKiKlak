@@ -1,0 +1,10 @@
+<h1>Bonjour c'est KlaKigone du site du Klak</h1>
+
+
+<p>Tu as voulu réinitialiser ton mot de passe pour retrouver ton chemin vers la KlaKovie, pas de soucis tu as juste à KliKer ici:</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>Merci de nous rejoindre et à bientôt pour une Kriée KlaKigone le martien informaticien</p>
