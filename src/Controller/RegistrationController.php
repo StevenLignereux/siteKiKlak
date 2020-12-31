@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,9 +79,10 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/verify/email", name="app_verify_email")
      * @param Request $request
+     * @param FlashyNotifier $flashy
      * @return Response
      */
-    public function verifyUserEmail(Request $request): Response
+    public function verifyUserEmail(Request $request, FlashyNotifier $flashy): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -89,13 +91,13 @@ class RegistrationController extends AbstractController
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
-
+            //$flashy->error('verify_email_error', $exception->getReason());
             return $this->redirectToRoute('app_register');
         }
 
 
-        $this->addFlash('success', 'Votre adresse mail a bien été vérifiée.');
-
+        //$this->addFlash('success', 'Votre adresse mail a bien été vérifiée.');
+        $flashy->success('Votre adresse mail a bien été vérifiée');
         return $this->redirectToRoute('app_main');
     }
 }
