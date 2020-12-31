@@ -94,7 +94,7 @@ $(document).ready(() => {
 
     new Masonry(grid, {
        itemSelector: '.grid-item',
-        gutter: 10
+        gutter: 15
     });
 
     // ------------------X---------------------------- Masonry Gallery -------------------------X---------------------------------------
