@@ -4,6 +4,9 @@
 {% block body %}
     {% include 'nav.html.twig' %}
     <main>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+        {% endfor %}
         <section class="site-title">
             <div class="site-background" data-aos="fade-up" data-aos-delay="100">
                 <h3>Bienvenue sur le site ki Klak</h3>
