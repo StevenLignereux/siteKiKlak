@@ -6,23 +6,26 @@
     {% include 'nav.html.twig' %}
     <main>
 
-        {% for flashError in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-        {% endfor %}
+            {% for flashError in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+            {% endfor %}
 
-        <h1 class="text-center">S'insKrire</h1>
-        <div class="flex-row">
-            {{ form_start(registrationForm, {'attr': {'class': 'form-group'}} ) }}
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
+            <h1 class="text-center">S'insKrire</h1>
+            <div class="flex-row">
+                {{ form_start(registrationForm, {'attr': {'class': 'form-group'}} ) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
 
-            <button type="submit" class="btn">S'insKrire</button>
-            {{ form_end(registrationForm) }}
-        </div>
+                <button type="submit" class="btn">S'insKrire</button>
+                {{ form_end(registrationForm) }}
+                <div class="site-content">
+                    {% include 'main/sidebar.html.twig' %}
+                </div>
+            </div>
 
     </main>
-
+    {% include 'footer.html.twig' %}
 {% endblock %}
