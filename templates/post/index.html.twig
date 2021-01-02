@@ -1,5 +1,5 @@
 {% block body %}
-    {# ------------------------------------------- Site Content ----------------------------------------------------        -#}
+    {# ------------------------------------------- Site Content ----------------------------------------------------          -#}
     <div class="site-content">
         <div class="posts">
             {% for post in post %}
@@ -15,13 +15,16 @@
                         </div>
                     </div>
                     <div class="post-title">
-                        <a href="#">{{ post.title }}</a>
-                        <p>{{ post.content }}</p>
-                        <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
+                        <a href="{{ path('post_detail', {slug: post.slug}) }}">{{ post.title }}</a>
+                        <p>{{ post.content|striptags|u.truncate(500, '...', false) }}</p>
+                        <a href="{{ path('post_detail', {slug: post.slug}) }}">
+                            <button class="btn post-btn">
+                                Lire la suite &nbsp; <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
-
 
 
             <div class="pagination flex-row">
@@ -34,5 +37,5 @@
         </div>
         {% include 'main/sidebar.html.twig' %}
     </div>
-    {# ------------------X------------------------- Site Content ---------------------------X-------------------------        -#}
+    {# ------------------X------------------------- Site Content ---------------------------X-------------------------          -#}
 {% endblock %}
