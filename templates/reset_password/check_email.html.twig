@@ -3,6 +3,6 @@
 {% block title %}Email de réinialisation de mot de passe{% endblock %}
 
 {% block body %}
-    <p>Ici KlaKigone, il semble que tu veuilles réionitialiser ton mot de passe ? Pas de soucis tu as juste à KliKer sur ce lien {{ tokenLifetime|date('g') }} heure(s).</p>
+    <p>Ici KlaKigone, il semble que tu veuilles réinitialiser ton mot de passe ? Pas de soucis tu as juste à KliKer sur ce lien {{ tokenLifetime|date('g') }} heure(s).</p>
     <p>Si tu n'as pas reçu d'e-mail, regarde dans tes spams, ou bien Klike sur ce lien <a href="{{ path('app_forgot_password_request') }}">Renvoyer l'e-mail</a>.</p>
 {% endblock %}
