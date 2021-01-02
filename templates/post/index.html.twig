@@ -2,93 +2,28 @@
     {# ------------------------------------------- Site Content ----------------------------------------------------        -#}
     <div class="site-content">
         <div class="posts">
-            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post1">
+            {% for post in post %}
+                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="post-image">
+                        <div>
+                            <img class="img" src="{{ asset('build/images/Blog-post/blog1.png') }}" alt="post1">
+                        </div>
+                        <div class="post-info flex-row">
+                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
+                            <span> 2 Comments</span>
+                        </div>
                     </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
-                        contry</a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
-                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
-                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
-                        sapiente similique.</p>
-                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-            <hr>
-            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/Blog-post/blog2.png') }}" alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
+                    <div class="post-title">
+                        <a href="#">{{ post.title }}</a>
+                        <p>{{ post.content }}</p>
+                        <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-                <div class="post-title">
-                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
-                        contry</a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
-                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
-                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
-                        sapiente similique.</p>
-                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-            <hr>
-            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/Blog-post/blog3.png') }}" alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
-                        contry</a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
-                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
-                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
-                        sapiente similique.</p>
-                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-            <hr>
-            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/Blog-post/blog4.png') }}" alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">Why should boys have all the fun? it's the women who are making india an alcohol-loving
-                        contry</a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad aperiam autem beatae commodi
-                        consequuntur culpa deleniti deserunt dolorem eveniet excepturi explicabo facilis, ipsum iusto
-                        labore laboriosam laborum molestiae nihil non nostrum, officiis omnis provident quas quod
-                        sapiente similique.</p>
-                    <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
+            {% endfor %}
+
+
+
             <div class="pagination flex-row">
                 <a href="#"><i class="fas fa-chevron-left"></i></a>
                 <a href="#" class="pages">1</a>
