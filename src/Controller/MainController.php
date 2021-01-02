@@ -43,4 +43,13 @@ class MainController extends AbstractController
     {
         return $this->render('main/team.html.twig');
     }
+
+    /**
+     * @Route ("/contact", name="app_contact")
+     * @return Response
+     */
+    public function contact(): Response
+    {
+       return $this->render('contact.html.twig');
+    }
 }
