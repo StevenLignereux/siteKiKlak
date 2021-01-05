@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -25,13 +26,14 @@ class CategoryRepository extends ServiceEntityRepository
 
     /**
      * @return int|mixed|string
+     * @throws NonUniqueResultException
      */
     public function countAllCategories(){
         $queryBuilder = $this->createQueryBuilder('c');
 
         $queryBuilder->select('COUNT(c.id) as value');
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
 }

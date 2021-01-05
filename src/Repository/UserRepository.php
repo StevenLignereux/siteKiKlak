@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -49,12 +50,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * @return int|mixed|string
+     * @throws NonUniqueResultException
      */
     public function countAllUsers(){
         $queryBuilder = $this->createQueryBuilder('u');
 
         $queryBuilder->select('COUNT(u.id) as value');
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

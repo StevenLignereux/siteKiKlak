@@ -21,7 +21,7 @@ class MainController extends AbstractController
      */
     public function index(PostRepository $postRepository): Response
     {
-        $post = $postRepository->findAll();
+        $post = $postRepository->findAllLatest();
         return $this->render('main/index.html.twig', [
             'post' => $post
         ]);
