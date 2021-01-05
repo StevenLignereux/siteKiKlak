@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        for ($nbUsers = 1; $nbUsers <= 30; $nbUsers++){
+        for ($nbUsers = 1; $nbUsers <= 5; $nbUsers++){
             $user = new User();
             $user->setEmail($faker->email);
 
@@ -50,6 +50,8 @@ class UserFixtures extends Fixture
             $user->setFirstname($faker->firstName);
             $user->setIsVerified($faker->numberBetween(0, 1));
             $manager->persist($user);
+
+            $this->addReference('user_'. $nbUsers, $user);
         }
 
         $manager->flush();
