@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -45,12 +46,21 @@ class EmailVerifier
      * @param Request $request
      * @param UserInterface $user
      * @throws VerifyEmailExceptionInterface
+     * @throws Exception
      */
     public function handleEmailConfirmation(Request $request, UserInterface $user): void
     {
         $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), $user->getId(), $user->getEmail());
 
         $user->setIsVerified(true);
+
+        if ($user->isVerified() == true) {
+            $user->SetRoles(["ROLE_USER"]);
+        } else {
+            throw new Exception("Erreur, vous n'avez pas comfirmé votre mail");
+        }
+
+
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class MainController
  * @package App\Controller
+ *
  */
 class MainController extends AbstractController
 {
@@ -25,6 +26,8 @@ class MainController extends AbstractController
             'post' => $post
         ]);
     }
+
+
 
     /**
      * @Route ("/about", name="app_about")
@@ -52,4 +55,6 @@ class MainController extends AbstractController
     {
        return $this->render('contact.html.twig');
     }
+
+
 }
