@@ -3,14 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Post;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PostCrudController extends AbstractCrudController
 {
@@ -22,14 +21,26 @@ class PostCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $imageFile = ImageField::new('image', 'Image')
+            ->setUploadDir('public/uploads/images');
+
+        $image = ImageField::new('image', 'Image')->setBasePath('/uploads/images');
+
+        $fields = [
             IntegerField::new('id', 'ID')->onlyOnIndex(),
             TextField::new('title', 'titre'),
             TextEditorField::new('content', 'contenu'),
-            TextareaField::new('imageFile')->setFormType(VichImageType::class)->setLabel('Image'),
-            AssociationField::new('user', 'user_name'),
-            AssociationField::new('category', 'catégories')
+            AssociationField::new('category', 'catégorie'),
+            AssociationField::new('user', 'auteur'),
         ];
+
+        if ($pageName === Crud::PAGE_INDEX || $pageName === Crud::PAGE_DETAIL) {
+            $fields[] = $image;
+        } else {
+            $fields[] = $imageFile;
+        }
+
+        return $fields;
     }
 
 }

@@ -198,7 +198,7 @@ class Post
     /**
      * @return DateTimeInterface|null
      */
-    public function getUpdated(): ?\DateTimeInterface
+    public function getUpdated(): ?DateTimeInterface
     {
         return $this->updated;
     }
@@ -207,7 +207,7 @@ class Post
      * @param DateTimeInterface|null $updated
      * @return $this
      */
-    public function setUpdated(?\DateTimeInterface $updated): self
+    public function setUpdated(?DateTimeInterface $updated): self
     {
         $this->updated = $updated;
 
@@ -223,7 +223,7 @@ class Post
     }
 
     /**
-     * @param File|null $imageFile
+     * @param File|null $image
      * @return Post
      */
     public function setImageFile(?File $imageFile = null): Post
@@ -231,7 +231,7 @@ class Post
         $this->imageFile = $imageFile;
 
         if (null !== $imageFile) {
-            $this->updated = new DateTime();
+            $this->updated = new DateTime('now');
         }
 
         return $this;
