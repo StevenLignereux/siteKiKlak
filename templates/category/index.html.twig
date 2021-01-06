@@ -1,0 +1,14 @@
+
+{% block body %}
+    <div class="category">
+        <h2>Category</h2>
+        <ul class="category-list">
+            {% for category in categories %}
+                <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                    <a href="">{{ category.name }}</a>
+{#                    <span>(05)</span>#}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

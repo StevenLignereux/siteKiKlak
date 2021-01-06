@@ -1,33 +1,8 @@
-
+{% extends "base.html.twig" %}
 
 {% block body %}
     <aside class="sidebar">
-        <div class="category">
-
-            <h2>Category</h2>
-            <ul class="category-list">
-                <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                    <a href="#">Software</a>
-                    <span>(05)</span>
-                </li>
-                <li class="list-items" data-aos="fade-left" data-aos-delay="200">
-                    <a href="#">Technology</a>
-                    <span>(02)</span>
-                </li>
-                <li class="list-items" data-aos="fade-left" data-aos-delay="300">
-                    <a href="#">LifeStyle</a>
-                    <span>(07)</span>
-                </li>
-                <li class="list-items" data-aos="fade-left" data-aos-delay="400">
-                    <a href="#">Shopping</a>
-                    <span>(07)</span>
-                </li>
-                <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                    <a href="#">Food</a>
-                    <span>(01)</span>
-                </li>
-            </ul>
-        </div>
+        {% include 'category/index.html.twig' %}
         {% include 'main/search.html.twig' %}
         <div class="popular-post">
             <h2>Popular Post</h2>

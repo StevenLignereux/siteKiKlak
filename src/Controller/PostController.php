@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,16 +27,22 @@ class PostController extends AbstractController
      * @Route ("/post/{slug}", name="post_detail")
      * @param $slug
      * @param PostRepository $postRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function details($slug, PostRepository $postRepository): Response
+    public function details($slug, PostRepository $postRepository, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
         $post = $postRepository->findOneBy(['slug' => $slug]);
+
 
         if (!$post){
             throw new NotFoundHttpException("Pas d'articles trouvé");
         }
 
-        return $this->render('post/details.html.twig', compact('post'));
+        return $this->render('post/details.html.twig', [
+            'categories' => $categories,
+            'post' => $post
+        ]);
     }
 }

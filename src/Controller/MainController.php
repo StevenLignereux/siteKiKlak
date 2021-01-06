@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,43 +24,60 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="app_main")
      * @param PostRepository $postRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function index(PostRepository $postRepository): Response
+    public function index(PostRepository $postRepository, CategoryRepository $categoryRepository): Response
     {
         $post = $postRepository->findAllLatest();
+        $categories = $categoryRepository->findAll();
+
         return $this->render('main/index.html.twig', [
-            'post' => $post
+            'post' => $post,
+            'categories' => $categories
         ]);
     }
 
     /**
      * @Route ("/about", name="app_about")
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function about(): Response
+    public function about(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('main/about.html.twig');
+        $categories = $categoryRepository->findAll();
+        return $this->render('main/about.html.twig', [
+            'categories' => $categories
+        ]);
     }
 
     /**
      * @Route("/team", name="app_team")
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function team(): Response
+    public function team(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('main/team.html.twig');
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('main/team.html.twig',[
+            'categories' => $categories
+        ]);
     }
 
     /**
      * @Route ("/contact", name="app_contact")
      * @param Request $request
      * @param MailerInterface $mailer
+     * @param FlashyNotifier $flashy
+     * @param CategoryRepository $categoryRepository
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function contact(Request $request, MailerInterface $mailer): Response
+    public function contact(Request $request, MailerInterface $mailer, FlashyNotifier $flashy, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
         $form = $this->createForm(ContactType::class);
 
         $contact = $form->handleRequest($request);
@@ -77,12 +96,13 @@ class MainController extends AbstractController
                 ]);
             $mailer->send($email);
 
-            $this->addFlash('message', 'Votre e-mail a bien été envoyé');
+            $flashy->success('Votre e-mail a bien été envoyé');
             return $this->redirectToRoute('app_contact');
         }
 
         return $this->render('contact.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 
