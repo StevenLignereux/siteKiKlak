@@ -10,7 +10,7 @@
                 <h1 class="text-center"> Nous KontaKter</h1>
 
                 <div class="flex-form">
-
+                {{ form_start(form) }}
                     {{ form_label(form.name) }}
                     {{ form_widget(form.name) }}
 
@@ -29,6 +29,7 @@
                     <button class="btn" type="submit">
                         Envoyer un Message
                     </button>
+                {{ form_end(form) }}
                 </div>
             </form>
             {% include 'main/sidebar.html.twig' %}

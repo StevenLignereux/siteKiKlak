@@ -2,14 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Form\ContactType;
 use App\Repository\PostRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -55,10 +54,10 @@ class MainController extends AbstractController
      * @Route ("/contact", name="app_contact")
      * @param Request $request
      * @param MailerInterface $mailer
-     * @param User $user
      * @return Response
+     * @throws TransportExceptionInterface
      */
-    public function contact(Request $request, MailerInterface $mailer, User $user): Response
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
         $form = $this->createForm(ContactType::class);
 
@@ -67,7 +66,19 @@ class MainController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $email = (new TemplatedEmail())
                 ->from($contact->get('email')->getData())
-                ->to($user->getEmail());
+                ->to('contact@klak.fr')
+                ->subject($contact->get('subject')->getData())
+                ->htmlTemplate('emails/contact.html.twig')
+                ->context([
+                    'name' => $contact->get('name')->getData(),
+                    'firstname' => $contact->get('firstname')->getData(),
+                    'mail' => $contact->get('email')->getData(),
+                    'message' => $contact->get('message')->getData()
+                ]);
+            $mailer->send($email);
+
+            $this->addFlash('message', 'Votre e-mail a bien été envoyé');
+            return $this->redirectToRoute('app_contact');
         }
 
         return $this->render('contact.html.twig', [
