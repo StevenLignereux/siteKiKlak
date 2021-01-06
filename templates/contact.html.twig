@@ -7,29 +7,29 @@
     <main>
         <div class="site-content">
             <form class="form-group" method="post">
-            <h1 class="text-center"> Nous KontaKter</h1>
+                <h1 class="text-center"> Nous KontaKter</h1>
 
                 <div class="flex-form">
-                    <label for="inputName">Nom</label>
-                    <input type="text" name="name" id="inputName" required autofocus>
 
-                    <label for="inputFirstName">Prenom</label>
-                    <input type="text"  name="firstname" id="inputFirstName" required autofocus>
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
 
-                    <label for="inputEmail">Email</label>
-                    <input type="email" name="email" id="inputEmail" required autofocus>
+                    {{ form_label(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
 
-                    <label for="inputSubject">Sujet</label>
-                    <input type="text" name="subject" id="inputSubject" required autofocus>
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
 
-                    <label for="inputMessage">Message</label>
-                    <textarea name="subject" id="inputSubject" rows="5" cols="33" required autofocus></textarea>
+                    {{ form_label(form.subject) }}
+                    {{ form_widget(form.subject) }}
 
-                    <button class="btn"  type="submit">
+                    {{ form_label(form.message) }}
+                    {{ form_widget(form.message) }}
+
+                    <button class="btn" type="submit">
                         Envoyer un Message
                     </button>
                 </div>
-
             </form>
             {% include 'main/sidebar.html.twig' %}
         </div>
