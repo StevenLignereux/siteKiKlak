@@ -36,6 +36,7 @@ class SecurityController extends AbstractController
             'categories' => $categories
         ]);
 
+
     }
 
     /**

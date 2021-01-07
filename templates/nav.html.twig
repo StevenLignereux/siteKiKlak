@@ -23,12 +23,26 @@
                 <li class="nav-link">
                     <a href="{{ path('app_team') }}">Les KlaKos</a>
                 </li>
-                <li class="nav-link">
-                    <a href="{{ path('app_login') }}">Se Konnekter</a>
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('app_register') }}">S'inskrire</a>
-                </li>
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-link">
+                        <a href="{{ path('profile') }}">Mon profile</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ path('app_logout') }}">Se DéKonnekter</a>
+                    </li>
+                {% else  %}
+                    <li class="nav-link">
+                        <a href="{{ path('app_login') }}">Se Konnekter</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ path('app_register') }}">S'inskrire</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-link">
+                        <a href="{{ path('admin') }}">Administrer le site</a>
+                    </li>
+                {% endif %}
                 <li class="nav-link">
                     <a href="{{ path('app_contact') }}">Nous KontaKter</a>
                 </li>

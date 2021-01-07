@@ -71,6 +71,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('SiteKiKlak');
+
     }
 
     /**
@@ -82,6 +83,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Articles', 'fas fa-clipboard', Post::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-newspaper', Category::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
+        yield MenuItem::linkToLogout('Retour au site', 'fas fa-arrow-circle-left');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 

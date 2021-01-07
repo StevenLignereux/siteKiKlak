@@ -186,13 +186,13 @@ class Post
 
     /**
      * @param string|null $image
-     * @return $this
+     * @return void
      */
-    public function setImage(?string $image): self
+    public function setImage(?string $image): void
     {
         $this->image = $image;
 
-        return $this;
+
     }
 
     /**
@@ -223,18 +223,16 @@ class Post
     }
 
     /**
-     * @param File|null $image
-     * @return Post
+     * @param File|null $imageFile
+     * @return void
      */
-    public function setImageFile(?File $imageFile = null): Post
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
         if (null !== $imageFile) {
-            $this->updated = new DateTime('now');
+            $this->updated = new \DateTimeImmutable();
         }
-
-        return $this;
 
     }
 
