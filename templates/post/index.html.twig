@@ -11,9 +11,8 @@
                             <img class="img" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="{{ post.image}}">
                         </div>
                         <div class="post-info flex-row">
-                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                            <span> 2 Comments</span>
+                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;{{ post.user }}</span>
+                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; {{ post.createdAt|date("d/m/Y") }}</span>
                         </div>
                     </div>
                     <div class="post-title">

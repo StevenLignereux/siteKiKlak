@@ -100,8 +100,7 @@ class RegistrationController extends AbstractController
         }
 
 
-        //$this->addFlash('success', 'Votre adresse mail a bien été vérifiée.');
         $flashy->success('Votre adresse mail a bien été vérifiée');
-        return $this->redirectToRoute('app_main');
+        return $this->redirectToRoute('profil');
     }
 }

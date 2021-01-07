@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre profile{% endblock %}
+{% block title %}Votre profil{% endblock %}
 
 {% block body %}
     {% include 'nav.html.twig' %}
@@ -22,7 +22,7 @@
                         <p>Nom : {{ app.user.name }}</p>
                         <p>Prénom : {{ app.user.firstname }}</p>
                         <p>Email : {{ app.user.email }}</p>
-                        <button class="btn"><a href="#">Modifier mon profile</a></button>
+                        <button class="btn"><a href="{{ path('profile_edit') }}">Modifier mon profil</a></button>
                         <button class="btn"><a href="#">Modifier mon mot de passe</a></button>
                     </div>
                     <br>
@@ -37,18 +37,8 @@
                         {% endfor %}
                         <button class="btn"><a href="{{ path('post_add') }}">Ajouter un article</a></button>
                         <button class="btn"><a href="">Modifier un article</a></button>
-
                     </div>
-
-
-
-                    {# <div class="post-image"> #}
-                    {# <div> #}
-                    {# <img class="img" src="{{ asset('build/images/krieur.jpg') }}" alt="krieur"> #}
-                    {# </div> #}
-                    {# </div> #}
                 </div>
-
             </div>
             {% include 'main/sidebar.html.twig' %}
         </div>

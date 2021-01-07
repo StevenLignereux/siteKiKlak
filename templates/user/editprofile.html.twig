@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer mon profil{% endblock %}
+
+{% block body %}
+    {% include 'nav.html.twig' %}
+    <main>
+        <div class="site-content">
+            <form class="form-group" method="post">
+                <h1 class="text-center">Editer mon profil</h1>
+
+                <div class="flex-form">
+                    {{ form_start(form) }}
+
+                    {{ form_label(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
+
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+
+                    <button class="btn" type="submit">
+                        Editer mon profil
+                    </button>
+                    {{ form_end(form) }}
+                </div>
+            </form>
+            {% include 'main/sidebar.html.twig' %}
+        </div>
+    </main>
+    {% include 'footer.html.twig' %}
+{% endblock %}
