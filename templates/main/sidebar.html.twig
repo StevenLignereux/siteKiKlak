@@ -1,8 +1,7 @@
-{% extends "base.html.twig" %}
 
 {% block body %}
     <aside class="sidebar">
-        {% include 'category/index.html.twig' %}
+        {{ render(path('categories')) }}
         {% include 'main/search.html.twig' %}
         <div class="popular-post">
             <h2>Popular Post</h2>

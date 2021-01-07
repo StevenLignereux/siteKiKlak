@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use App\Repository\CategoryRepository;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
 use MercurySeries\FlashyBundle\FlashyNotifier;
@@ -35,9 +34,8 @@ class RegistrationController extends AbstractController
      * @param UserAuthenticator $authenticator
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, CategoryRepository $categoryRepository): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
-        $categories = $categoryRepository->findAll();
 
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -76,7 +74,6 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-            'categories' => $categories
         ]);
     }
 

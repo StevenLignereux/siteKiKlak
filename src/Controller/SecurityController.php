@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 
-use App\Repository\CategoryRepository;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,12 +18,10 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      * @param AuthenticationUtils $authenticationUtils
-     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils, CategoryRepository $categoryRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $categories = $categoryRepository->findAll();
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -33,7 +30,6 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 'error' => $error,
-            'categories' => $categories
         ]);
 
 
