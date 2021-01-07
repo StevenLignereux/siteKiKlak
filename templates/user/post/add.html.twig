@@ -6,28 +6,29 @@
     {% include 'nav.html.twig' %}
     <main>
         <div class="site-content">
-            <form class="form-group" method="post">
+            <form class="form-group" method="post" enctype="multipart/form-data">
                 <h1 class="text-center">Ajouter un article</h1>
 
                 <div class="flex-form">
-                    {{ form_start(form) }}
+                        {{ form_start(form) }}
 
-                    {{ form_label(form.title) }}
-                    {{ form_widget(form.title) }}
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title) }}
 
-                    {{ form_label(form.content) }}
-                    {{ form_widget(form.content) }}
+                        {{ form_label(form.content) }}
+                        {{ form_widget(form.content) }}
 
-                    {{ form_label(form.imageFile) }}
-                    {{ form_widget(form.imageFile) }}
+                        {{ form_label(form.imageFile) }}
+                        {{ form_widget(form.imageFile) }}
 
-                    {{ form_label(form.category) }}
-                    {{ form_widget(form.category) }}
 
-                    <button class="btn" type="submit">
-                        Poster mon article
-                    </button>
-                    {{ form_end(form) }}
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category) }}
+
+                        <button class="btn" type="submit">
+                            Poster mon article
+                        </button>
+                        {{ form_end(form) }}
                 </div>
             </form>
             {% include 'main/sidebar.html.twig' %}

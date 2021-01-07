@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,4 +46,6 @@ class PostController extends AbstractController
             'post' => $post
         ]);
     }
+
+
 }

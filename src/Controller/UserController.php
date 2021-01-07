@@ -6,7 +6,6 @@ use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\CategoryRepository;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +38,7 @@ class UserController extends AbstractController
      * @param FlashyNotifier $flashyNotifier
      * @return Response
      */
-    public function addPost(CategoryRepository $categoryRepository, Request $request, FlashyNotifier $flashyNotifier): Response
+    public function add(CategoryRepository $categoryRepository, Request $request, FlashyNotifier $flashyNotifier): Response
     {
         $categories = $categoryRepository->findAll();
         $post = new Post();

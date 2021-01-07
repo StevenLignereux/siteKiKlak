@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -69,8 +69,11 @@ class Post
      */
     private $imageFile;
 
+
+
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTimeInterface|null
      */
     private $updated;
 
@@ -220,22 +223,25 @@ class Post
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+
+
     }
+
 
     /**
      * @param File|null $imageFile
-     * @return void
+     *
+     * @return Post
      */
-    public function setImageFile(?File $imageFile = null): void
+    public function setImageFile(?File $imageFile = null): Post
     {
         $this->imageFile = $imageFile;
-
         if (null !== $imageFile) {
-            $this->updated = new \DateTimeImmutable();
+            $this->updated = new DateTimeImmutable();
         }
 
+        return $this;
     }
-
 
 
 
