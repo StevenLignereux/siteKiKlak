@@ -100,6 +100,6 @@ class RegistrationController extends AbstractController
 
 
         $flashy->success('Votre adresse mail a bien été vérifiée');
-        return $this->redirectToRoute('profil');
+        return $this->redirectToRoute('profile');
     }
 }
