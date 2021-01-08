@@ -2,7 +2,8 @@
 {% block body %}
     <aside class="sidebar">
         {{ render(path('categories')) }}
-        {% include 'main/search.html.twig' %}
+{#        {% include 'main/search.html.twig' %}#}
+        {{ render(path('search')) }}
         <div class="popular-post">
             <h2>Popular Post</h2>
             <div class="post-content" data-aos="flip-up" data-aos-delay="200">
