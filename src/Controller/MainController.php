@@ -31,22 +31,11 @@ class MainController extends AbstractController
     {
         $post = $postRepository->findBy([], ['createdAt' => 'desc'], 12);
 
-        $form = $this->createForm(SearchPostType::class);
-
-        $search = $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $post = $postRepository->search(
-                $search->get('words')->getData(),
-                $search->get('category')->getData()
-            );
-        }
-
         return $this->render('main/index.html.twig', [
             'post' => $post,
-            'form' => $form->createView()
         ]);
     }
+
 
 
     /**
