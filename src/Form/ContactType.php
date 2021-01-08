@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,12 +26,12 @@ class ContactType extends AbstractType
             ->add('subject', TextType::class, [
                 'label' => 'Sujet'
             ])
-            ->add('message', TextareaType::class, [
+            ->add('message', CKEditorType::class, [
                 'label' => 'Votre message',
-                'attr' => [
-                    'rows' => 5,
-                    'cols' => 31
-                ]
+//                'attr' => [
+//                    'rows' => 5,
+//                    'cols' => 31
+//                ]
             ])
         ;
     }

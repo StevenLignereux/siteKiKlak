@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class UserController
@@ -87,5 +88,34 @@ class UserController extends AbstractController
         return $this->render('user/editprofile.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route ("/profile/changepassword", name="profile_change_password")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param FlashyNotifier $flashyNotifier
+     * @return RedirectResponse|Response
+     */
+    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, FlashyNotifier $flashyNotifier)
+    {
+        if ($request->isMethod('POST')){
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $this->getUser();
+
+            if ($request->get('pass') == $request->get('pass2')){
+                $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('pass')));
+                $em->flush();
+                $flashyNotifier->success('Mot de passe mis à jour avec succès');
+
+                return $this->redirectToRoute('profile');
+
+            } else {
+                $flashyNotifier->error('Erreur les deux mots de passe ne sont pas identiques');
+            }
+        }
+
+        return $this->render('user/changePassword.html.twig');
     }
 }

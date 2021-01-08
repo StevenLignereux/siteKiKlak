@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
+use Exception;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -91,9 +92,10 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $exception->getReason());
+            $flashy->error('verify_email_error', $exception->getReason());
             //$flashy->error('verify_email_error', $exception->getReason());
             return $this->redirectToRoute('app_register');
+        } catch (Exception $e) {
         }
 
 

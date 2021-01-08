@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210107100424 extends AbstractMigration
+final class Version20210108000638 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -21,11 +21,13 @@ final class Version20210107100424 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE post CHANGE updated updated DATETIME DEFAULT NULL');
+        $this->addSql('CREATE FULLTEXT INDEX IDX_5A8A6C8D2B36786BFEC530A9 ON post (title, content)');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('DROP INDEX IDX_5A8A6C8D2B36786BFEC530A9 ON post');
         $this->addSql('ALTER TABLE post CHANGE updated updated DATETIME NOT NULL');
     }
 }
