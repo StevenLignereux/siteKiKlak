@@ -12,7 +12,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
- * @ORM\Table (name="post", indexes={@ORM\Index(columns={"title", "content"}, flags={"fulltext"})})
  * @Vich\Uploadable
  */
 class Post

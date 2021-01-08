@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Event;
 use App\Entity\Post;
 use App\Entity\User;
 use App\Repository\CategoryRepository;
@@ -83,6 +84,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Articles', 'fas fa-clipboard', Post::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-newspaper', Category::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Evénements', 'fas fa-calendar', Event::class);
         yield MenuItem::linkToLogout('Retour au site', 'fas fa-arrow-circle-left');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
