@@ -26,18 +26,17 @@ class MainController extends AbstractController
      * @param PostRepository $postRepository
      * @return Response
      */
-    public function index(): Response
+    public function index(Request $request, PostRepository $postRepository): Response
     {
-//        $limit = 5;
-//        $page = (int)$request->query->get("page", 1);
-//
-//        $post = $postRepository->getPaginatedPost($page, $limit);
-//
-//        $total = $postRepository->getTotalPost();
-//        $post = $postRepository->findAll();
+        $limit = 3;
 
-        return $this->render('main/index.html.twig');
-//            compact('post', 'total', 'limit', 'page'));
+        $page = (int)$request->query->get('page', '1');
+
+        $post = $postRepository->getPaginatedPost($page, $limit);
+
+        $total = $postRepository->getTotalPost();
+
+        return $this->render('main/index.html.twig', compact('post', 'total', 'limit', 'page'));
     }
 
     /**

@@ -4,8 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -95,11 +93,8 @@ class PostRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->select('COUNT(p)');
-
-        try {
             return $query->getQuery()->getSingleScalarResult();
-        } catch (NoResultException | NonUniqueResultException $e) {
-        }
+
     }
 
 }

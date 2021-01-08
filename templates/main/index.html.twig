@@ -10,7 +10,7 @@
                 <h1>Koncept Lambda Des Allumés Du KasK</h1>
                 <button class="btn"><a href="#modal1" class="js-modal">Attention veuillez KliKer</a></button>
 
-                {# -------------------------------Modal content----------------------------------------- -#}
+                {# -------------------------------Modal content-----------------------------------------  -#}
                 <aside id="modal1" class="modal" aria-hidden="true"
                        aria-labelledby="titlemodal" style="display: none;">
                     <div class="modal-wrapper js-modal-stop">
@@ -21,19 +21,29 @@
 
                     </div>
                 </aside>
-                {# ----------------X---------------Modal content-----------------------X------------------ -#}
+                {# ----------------X---------------Modal content-----------------------X------------------  -#}
             </div>
         </section>
-{#        ---------------------------------Carousel Section------------------------------------------------------#}
+        {# ---------------------------------Carousel Section----------------------------------------------------- -#}
         <section class="container">
             {{ render(path('event')) }}
         </section>
-        {#        ------------------------X---------Carousel Section-----------------------------X-------------------------#}
-{#        ------------------------------------------- Post Section ---------------------------------------------------------#}
+        {# ------------------------X---------Carousel Section-----------------------------X------------------------ -#}
+        {# ------------------------------------------- Post Section -------------------------------------------------------- -#}
         <section class="container">
             {{ render(path('post')) }}
+            <div class="site-content">
+                <div class="pagination flex-row">
+                    {% set pages = (total / limit )|round(0, 'ceil') %}
+                    <a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}"><i class="fas fa-chevron-left"></i></a>
+                    {% for nbPage in 1..(pages) %}
+                        <a href="?page={{ nbPage }}" class="{{ (page == nbPage) ? 'pages' : '' }}">{{ nbPage }}</a>
+                    {% endfor %}
+                    <a href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
         </section>
-{#        ------------------------------------------- Post Section ---------------------------------------------------------#}
+        {# ------------------------------------------- Post Section -------------------------------------------------------- -#}
     </main>
     {% include 'footer.html.twig' %}
 {% endblock %}

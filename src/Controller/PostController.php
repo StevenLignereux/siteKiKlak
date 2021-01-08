@@ -22,17 +22,10 @@ class PostController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function index(PostRepository $postRepository, Request $request): Response
+    public function index(PostRepository $postRepository): Response
     {
-        $limit = 5;
-        $page = (int)$request->query->get("page", 1);
-
-        $post = $postRepository->getPaginatedPost($page, $limit);
-
-        $total = $postRepository->getTotalPost();
-
-        return $this->render('post/index.html.twig', compact('post', 'total', 'limit', 'page'));
-
+        $post = $postRepository->findBy([], ['createdAt' => 'desc' ], 3);
+        return $this->render('post/index.html.twig', compact('post'));
     }
 
     /**

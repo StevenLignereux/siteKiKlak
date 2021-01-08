@@ -1,5 +1,5 @@
 {% block body %}
-    {# ------------------------------------------- Site Content ----------------------------------------------------           -#}
+    {# ------------------------------------------- Site Content ----------------------------------------------------            -#}
     <div class="site-content">
         <div class="posts">
             {% for post in post %}
@@ -24,17 +24,8 @@
                     </div>
                 </div>
             {% endfor %}
-
-
-            <div class="pagination flex-row">
-                <a href="?page={{ page - 1 }}"><i class="fas fa-chevron-left"></i></a>
-                    {% for nbPage in 1..((total / limit)|round(0, 'ceil')) %}
-                        <a href="?page={{ nbPage }}"  class="pages">{{ nbPage }}</a>
-                    {% endfor %}
-                    <a href="?page={{ page + 1 }}"><i class="fas fa-chevron-right"></i></a>
-            </div>
         </div>
         {% include 'main/sidebar.html.twig' %}
     </div>
-    {# ------------------X------------------------- Site Content ---------------------------X-------------------------           -#}
+    {# ------------------X------------------------- Site Content ---------------------------X-------------------------            -#}
 {% endblock %}
