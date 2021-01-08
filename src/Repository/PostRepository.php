@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -67,6 +69,37 @@ class PostRepository extends ServiceEntityRepository
             ->orderBy('RAND()')
             ->setMaxResults(5);
         return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Return all post per page
+     * @param $page
+     * @param $limit
+     * @return int|mixed|string
+     */
+    public function getPaginatedPost($page, $limit)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Return number of posts
+     */
+    public function getTotalPost()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->select('COUNT(p)');
+
+        try {
+            return $query->getQuery()->getSingleScalarResult();
+        } catch (NoResultException | NonUniqueResultException $e) {
+        }
     }
 
 }

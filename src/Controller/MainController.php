@@ -22,16 +22,22 @@ class MainController extends AbstractController
 {
     /**
      * @Route("/", name="app_main")
+     * @param Request $request
      * @param PostRepository $postRepository
      * @return Response
      */
-    public function index(PostRepository $postRepository): Response
+    public function index(): Response
     {
-        $post = $postRepository->findBy([], ['createdAt' => 'desc'], 5);
+//        $limit = 5;
+//        $page = (int)$request->query->get("page", 1);
+//
+//        $post = $postRepository->getPaginatedPost($page, $limit);
+//
+//        $total = $postRepository->getTotalPost();
+//        $post = $postRepository->findAll();
 
-        return $this->render('main/index.html.twig', [
-            'post' => $post,
-        ]);
+        return $this->render('main/index.html.twig');
+//            compact('post', 'total', 'limit', 'page'));
     }
 
     /**

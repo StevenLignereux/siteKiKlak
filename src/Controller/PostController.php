@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,11 +17,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post")
+     * @Route("/post", name="post")
+     * @param PostRepository $postRepository
+     * @param Request $request
+     * @return Response
      */
-    public function index(): Response
+    public function index(PostRepository $postRepository, Request $request): Response
     {
-        return $this->render('post/index.html.twig');
+        $limit = 5;
+        $page = (int)$request->query->get("page", 1);
+
+        $post = $postRepository->getPaginatedPost($page, $limit);
+
+        $total = $postRepository->getTotalPost();
+
+        return $this->render('post/index.html.twig', compact('post', 'total', 'limit', 'page'));
+
     }
 
     /**
