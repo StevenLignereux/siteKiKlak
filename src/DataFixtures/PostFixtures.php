@@ -24,6 +24,7 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitle($faker->realText(25))
                 ->setContent($faker->realText(400));
 
+
             $manager->persist($post);
         }
         $manager->flush();
