@@ -34,11 +34,28 @@ class PostRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function findAllLatest(){
-        $querybuilder = $this->createQueryBuilder('p');
-        $querybuilder->orderBy('p.createdAt', 'DESC');
+    /**
+     * @param null $words
+     * @param null $category
+     * @return int|mixed|string
+     */
+    public function search($words = null, $category = null)
+    {
+        $query = $this->createQueryBuilder('p');
 
-        return $querybuilder->getQuery()->getResult();
+        if ($words != null){
+            $query->andWhere('MATCH_AGAINST(p.title, p.content) AGAINST (:words boolean)>0')
+                ->setParameter('words', $words);
+        }
+
+        if ($category != null) {
+            $query->leftJoin('p.category', 'c');
+            $query->andWhere('c.id = :id')
+                ->setParameter('id', $category);
+        }
+
+        return $query->getQuery()->getResult();
     }
+
 
 }

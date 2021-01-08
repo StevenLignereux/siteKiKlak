@@ -2,23 +2,24 @@
     <div class="search" data-aos="fade-up" data-aos-delay="300">
         <h2>Recherche</h2>
         <div class="form-element">
-            <label for="search">
-                <input name="search" type="text" class="input-element" placeholder="Entrez votre recherche">
-            </label>
-            <button class="btn form-btn">Rechercher</button>
+            {{ form_start(form) }}
+                {{ form_widget(form.words) }}
+                {{ form_widget(form.category) }}
+                {{ form_widget(form.Rechercher) }}
+            {{ form_end(form) }}
         </div>
     </div>
-    <div class="popular-tags">
-        <h2>Popular Tags</h2>
-        <div class="tags flex-row">
-            <span class="tag" data-aos-delay="100">Sofware</span>
-            <span class="tag" data-aos-delay="200">technology</span>
-            <span class="tag" data-aos-delay="300">travel</span>
-            <span class="tag" data-aos-delay="400">illustration</span>
-            <span class="tag" data-aos-delay="500">design</span>
-            <span class="tag" data-aos-delay="600">lifestyle</span>
-            <span class="tag" data-aos-delay="700">love</span>
-            <span class="tag" data-aos-delay="800">project</span>
-        </div>
-    </div>
+{#    <div class="popular-tags">#}
+{#        <h2>Popular Tags</h2>#}
+{#        <div class="tags flex-row">#}
+{#            <span class="tag" data-aos-delay="100">Sofware</span>#}
+{#            <span class="tag" data-aos-delay="200">technology</span>#}
+{#            <span class="tag" data-aos-delay="300">travel</span>#}
+{#            <span class="tag" data-aos-delay="400">illustration</span>#}
+{#            <span class="tag" data-aos-delay="500">design</span>#}
+{#            <span class="tag" data-aos-delay="600">lifestyle</span>#}
+{#            <span class="tag" data-aos-delay="700">love</span>#}
+{#            <span class="tag" data-aos-delay="800">project</span>#}
+{#        </div>#}
+{#    </div>#}
 {% endblock %}
