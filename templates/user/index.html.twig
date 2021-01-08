@@ -23,7 +23,8 @@
                         <p>Prénom : {{ app.user.firstname|striptags }}</p>
                         <p>Email : {{ app.user.email|striptags }}</p>
                         <button class="btn"><a href="{{ path('profile_edit') }}">Modifier mon profil</a></button>
-                        <button class="btn"><a href="{{ path('profile_change_password') }}">Modifier mon mot de passe</a></button>
+                        <button class="btn"><a href="{{ path('profile_change_password') }}">Modifier mon mot de
+                                passe</a></button>
                     </div>
                     <br>
                     <div class="post-title text-center">
@@ -31,12 +32,19 @@
                         <br>
                         <hr>
                         <br>
-                        <h4>Vous avez ékrit {{ app.user.posts|length}} artiKles : </h4>
+                        <h4>Vous avez ékrit {{ app.user.posts|length }} artiKles : </h4>
                         {% for post in app.user.posts %}
-                            <p>{{ post.title|striptags }}</p>
+                            <div>
+                                <a href="{{ path('post_detail', {slug: post.slug}) }}">{{ post.title }}</a>
+                                <button class="btn">
+                                    <a id="post-modif" href="{{ path('post_edit', {id: post.id}) }}">Modifier
+                                        l'article</a>
+                                </button>
+
+                            </div>
+
                         {% endfor %}
                         <button class="btn"><a href="{{ path('post_add') }}">Ajouter un article</a></button>
-                        <button class="btn"><a href="">Modifier un article</a></button>
                     </div>
                 </div>
             </div>

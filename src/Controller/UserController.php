@@ -63,6 +63,36 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route ("/profile/post/edit/{id}", name="post_edit")
+     * @param Request $request
+     * @param FlashyNotifier $flashyNotifier
+     * @param Post $post
+     * @return Response
+     */
+    public function edit(Request $request, FlashyNotifier $flashyNotifier, Post $post): Response
+    {
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            $flashyNotifier->warning('Votre article a bien été modifié');
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('user/post/add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+
+    /**
      * @Route ("/profile/edit", name="profile_edit")
      * @param Request $request
      * @param FlashyNotifier $flashyNotifier
