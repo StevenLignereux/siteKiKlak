@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
+ * @Vich\Uploadable
  */
 class Event
 {
@@ -47,6 +48,14 @@ class Event
      * @var File
      */
     private $imageFile;
+
+//    /**
+//     * @return string|null
+//     */
+//    public function __toString(): ?string
+//    {
+//        return $this->getBeginAt()->format('Y-m-d H:i:s');
+//    }
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
