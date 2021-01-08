@@ -57,5 +57,16 @@ class PostRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    /**
+     * Return 5 post in random order
+     * @return int|mixed|string
+     */
+    public function postsRandomOrder()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('RAND()')
+            ->setMaxResults(5);
+        return $query->getQuery()->getResult();
+    }
 
 }

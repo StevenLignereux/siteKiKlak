@@ -43,4 +43,18 @@ class PostController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/post/random", name="post_random")
+     * @param PostRepository $postRepository
+     * @return Response
+     */
+    public function randomPost(PostRepository $postRepository): Response
+    {
+        $post = $postRepository->postsRandomOrder();
+
+        return $this->render('post/randompost.html.twig', [
+            'post' => $post
+        ]);
+    }
+
 }

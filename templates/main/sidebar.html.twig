@@ -1,84 +1,9 @@
-
 {% block body %}
     <aside class="sidebar">
         {{ render(path('categories')) }}
-        <div class="popular-post">
-            <h2>Popular Post</h2>
-            <div class="post-content" data-aos="flip-up" data-aos-delay="200">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/popular-post/m-blog-1.jpg') }}" alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">New data recording system to better analyse road accidents</a>
-                </div>
-            </div>
-            <div class="post-content" data-aos="flip-up" data-aos-delay="300">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/popular-post/m-blog-2.jpg') }}"
-                             alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">New data recording system to better analyse road accidents</a>
-                </div>
-            </div>
-            <div class="post-content" data-aos="flip-up" data-aos-delay="400">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/popular-post/m-blog-3.jpg') }}"
-                             alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">New data recording system to better analyse road accidents</a>
-                </div>
-            </div>
-            <div class="post-content" data-aos="flip-up" data-aos-delay="500">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/popular-post/m-blog-4.jpg') }}"
-                             alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">New data recording system to better analyse road accidents</a>
-                </div>
-            </div>
-            <div class="post-content" data-aos="flip-up" data-aos-delay="600">
-                <div class="post-image">
-                    <div>
-                        <img class="img" src="{{ asset('build/images/popular-post/m-blog-5.jpg') }}"
-                             alt="post1">
-                    </div>
-                    <div class="post-info flex-row">
-                        <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp; Janury 14, 2019</span>
-                        <span> 2 Comments</span>
-                    </div>
-                </div>
-                <div class="post-title">
-                    <a href="#">New data recording system to better analyse road accidents</a>
-                </div>
-            </div>
-        </div>
+        {{ render(controller(
+            'App\\Controller\\PostController::randomPost'
+        )) }}
     </aside>
 {% endblock %}
 

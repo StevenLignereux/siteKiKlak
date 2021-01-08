@@ -19,3 +19,5 @@ doctrine:
         dql:
             string_functions:
                 MATCH_AGAINST: App\Extensions\Doctrine\MatchAgainst
+            numeric_functions:
+                rand: DoctrineExtensions\Query\Mysql\Rand

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
-use App\Form\SearchPostType;
 use App\Repository\PostRepository;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -24,19 +23,16 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="app_main")
      * @param PostRepository $postRepository
-     * @param Request $request
      * @return Response
      */
-    public function index(PostRepository $postRepository, Request $request): Response
+    public function index(PostRepository $postRepository): Response
     {
-        $post = $postRepository->findBy([], ['createdAt' => 'desc'], 12);
+        $post = $postRepository->findBy([], ['createdAt' => 'desc'], 5);
 
         return $this->render('main/index.html.twig', [
             'post' => $post,
         ]);
     }
-
-
 
     /**
      * @Route ("/about", name="app_about")
