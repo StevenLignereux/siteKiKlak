@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ContactType extends AbstractType
 {
@@ -15,24 +17,39 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre nom',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-z]+$/i',
+                        'message' => 'Votre nom ne doit pas contenir de caractères spéciaux ou de chiffres'
+                    ])
+                ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Prénom'
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre nom',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-z]+$/i',
+                        'message' => 'Votre prénom ne doit pas contenir de caractères spéciaux ou de chiffres'
+                    ])
+                ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Votre e-mail',
-                'constraint'
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer votre adresse e-mail'
+                    ]),
+                ]
             ])
             ->add('subject', TextType::class, [
                 'label' => 'Sujet'
             ])
             ->add('message', CKEditorType::class, [
                 'label' => 'Votre message',
-//                'attr' => [
-//                    'rows' => 5,
-//                    'cols' => 31
-//                ]
             ])
         ;
     }

@@ -15,7 +15,7 @@
                     </div>
                     <div class="post-title">
                         <a href="{{ path('post_detail', {slug: post.slug}) }}">{{ post.title }}</a>
-                        <p>{{ post.content|striptags|u.truncate(500, '...', false) }}</p>
+                        <p>{{ post.content|raw|u.truncate(500, '...', false) }}</p>
                         <a href="{{ path('post_detail', {slug: post.slug}) }}">
                             <button class="btn post-btn">
                                 Lire la suite &nbsp; <i class="fas fa-arrow-right"></i>

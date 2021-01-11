@@ -25,7 +25,7 @@ class PostType extends AbstractType
             ])
             ->add('imageFile', FileType::class, [
                 'label' => 'Une image ?',
-                'required' => false
+                'required' => false,
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
