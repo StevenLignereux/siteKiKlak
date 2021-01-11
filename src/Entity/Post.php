@@ -243,6 +243,4 @@ class Post
         return $this;
     }
 
-
-
 }

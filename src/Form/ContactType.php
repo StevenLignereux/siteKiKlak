@@ -21,7 +21,8 @@ class ContactType extends AbstractType
                 'label' => 'Prénom'
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Votre e-mail'
+                'label' => 'Votre e-mail',
+                'constraint'
             ])
             ->add('subject', TextType::class, [
                 'label' => 'Sujet'
